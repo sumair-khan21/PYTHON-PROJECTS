@@ -20,5 +20,5 @@ Frontend automatically generate karta hai, React ya HTML ki zaroorat nahi hoti. 
 
 ***Unit Converter - Simple & Fast*** 🔄
 
-Easily convert between different units with just one click! This Unit Converter supports length and weight conversions, making calculations quick and hassle-free. Try it now: 
+This Unit Converter lets you effortlessly switch between meters, kilometers, grams, and kilograms. Just enter a value, select units, and get instant results! Perfect for quick calculations. 
 https://python-projects-xvtkvzj2fjgpp6rxszhwea.streamlit.app/
