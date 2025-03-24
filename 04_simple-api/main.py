@@ -34,7 +34,7 @@ money_quotes = [
     "A wise person should have money in their head, but not in their heart. – Jonathan Swift",
     "Money grows on the tree of persistence. – Japanese Proverb",
 ]
-
+# they show return statenment
 @app.get("/")
 def read_root():
     return {
