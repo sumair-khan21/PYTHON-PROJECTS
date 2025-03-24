@@ -4,3 +4,7 @@ do api banayenge ek
 side hustle or ek money quotes
 fastapi dev main.py
  -->
+
+# FastAPI Project - Speed & Simplicity
+
+This project is built using FastAPI, a modern and fast web framework for building APIs with Python. It ensures high performance, easy scalability, and clean code.
