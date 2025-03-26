@@ -6,4 +6,6 @@ This is a simple quiz app built with Python. It allows users to answer multiple-
 ✅ Instant feedback on answers
 ✅ Simple and lightweight
 
-This project is great for learning and testing knowledge in a fun way! 😊
+This project is great for learning and testing knowledge in a fun way! 
+
+Try Now: https://python-projects-bd5geknhuaqfrqdqyvv4z8.streamlit.app/
