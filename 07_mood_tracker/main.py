@@ -1,70 +1,112 @@
-import streamlit as st
-import pandas as pd # data manipulation
-import datetime #handle date
-import csv # for reading and writing csv files
-import os # for file operations
+# import streamlit as st
+# import pandas as pd # data manipulation
+# import datetime #handle date
+# import csv # for reading and writing csv files
+# import os # for file operations
 
-# mood file constant varaible isko mne samll isliye  nhi likha k ye constant file hy ye file change nhi hogi lekin iska data change hoga
+# # mood file constant varaible isko mne samll isliye  nhi likha k ye constant file hy ye file change nhi hogi lekin iska data change hoga
+# MOOD_FILE = "mood_log.csv"
+
+# def load_mood_data():
+#     if not os.path.exists(MOOD_FILE):
+#         # dataframe pandas ka module hy ye hamray data ko sequence se kr deta hy row column wise
+#         return pd.DataFrame(columns=["Date","Mood"])
+#     # readcsv hamaray file k data kor read karegi ye bhi pandas ka module hy
+#     return pd.read_csv(MOOD_FILE)
+
+
+# def save_mood_data(date, mood):
+#     # with hamaray data ko insert kr rha save kr rha hy csv file m "a" means append next line m data data ho rha or file ye ek varaible hy
+#     with open(MOOD_FILE, "a") as file:
+ 
+# #  writer function file k ander data ko write kr rha hy
+#          writer = csv.writer(file)
+     
+#          writer.writerow([date, mood])
+         
+# st.title("Mood Tracker")
+
+# today = datetime.date.today()
+
+# st.subheader("How are you feeling today?")
+
+# mood = st.selectbox("Select your mood", ["Happy", "Sad", "Angry","Neutral"])
+
+# if st.button("Log Mood"):
+#     save_mood_data(today, mood)
+    
+#     st.success("Mood Logged Successfully!")
+    
+# data = load_mood_data()
+
+# if not data.empty:
+    
+#     st.subheader("Mood Trends Over Time")
+    
+# # ["Date"] ye csv ki file m key ka naam hy
+# # to_datetime jo string m arha hy isko object m convert kr rha hy phle data ka vairble aya phr column ka name Date
+#     data["Date"] = pd.to_datetime(data["Date"])
+    
+#     # groupby check karega k user ka mood kis din kesa ta
+#     mood_counts = data.groupby("Mood").count()["Date"]
+    
+#     # bar chart means row and columns
+#     st.bar_chart(mood_counts)
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+import streamlit as st
+import pandas as pd
+import datetime
+import csv
+import os
+
 MOOD_FILE = "mood_log.csv"
 
 def load_mood_data():
-    if not os.path.exists(MOOD_FILE):
-        # dataframe pandas ka module hy ye hamray data ko sequence se kr deta hy row column wise
-        return pd.DataFrame(columns=["Date","Mood"])
-    # readcsv hamaray file k data kor read karegi ye bhi pandas ka module hy
+    if not os.path.exists(MOOD_FILE) or os.stat(MOOD_FILE).st_size == 0:
+        return pd.DataFrame(columns=["Date", "Mood"])
     return pd.read_csv(MOOD_FILE)
 
-
 def save_mood_data(date, mood):
-    # with hamaray data ko insert kr rha save kr rha hy csv file m "a" means append next line m data data ho rha or file ye ek varaible hy
-    with open(MOOD_FILE, "a") as file:
- 
-#  writer function file k ander data ko write kr rha hy
-         writer = csv.writer(file)
-     
-         writer.writerow([date, mood])
-         
+    file_exists = os.path.exists(MOOD_FILE)
+    
+    with open(MOOD_FILE, "a", newline="") as file:
+        writer = csv.writer(file)
+        if not file_exists or os.stat(MOOD_FILE).st_size == 0:
+            writer.writerow(["Date", "Mood"])  # Ensure headers exist
+        writer.writerow([date, mood])
+
 st.title("Mood Tracker")
 
 today = datetime.date.today()
-
 st.subheader("How are you feeling today?")
-
-mood = st.selectbox("Select your mood", ["Happy", "Sad", "Angry","Neutral"])
+mood = st.selectbox("Select your mood", ["Happy", "Sad", "Angry", "Neutral"])
 
 if st.button("Log Mood"):
     save_mood_data(today, mood)
-    
     st.success("Mood Logged Successfully!")
-    
+
 data = load_mood_data()
 
+# Debugging Step
+st.write("Data Loaded:", data)
+
 if not data.empty:
-    
     st.subheader("Mood Trends Over Time")
-    
-# ["Date"] ye csv ki file m key ka naam hy
-# to_datetime jo string m arha hy isko object m convert kr rha hy phle data ka vairble aya phr column ka name Date
-    data["Date"] = pd.to_datetime(data["Date"])
-    
-    # groupby check karega k user ka mood kis din kesa ta
+    data["Date"] = pd.to_datetime(data["Date"], errors='coerce')  # Prevent errors if column format is wrong
     mood_counts = data.groupby("Mood").count()["Date"]
-    
-    # bar chart means row and columns
     st.bar_chart(mood_counts)
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
     
     
     
