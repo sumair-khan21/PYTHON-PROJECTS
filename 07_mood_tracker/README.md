@@ -19,4 +19,7 @@ Mood Tracker is a simple and effective web app that helps you log and analyze yo
 This app is built using Streamlit, Pandas, and Python, making it lightweight and efficient.
 
 
-Start tracking your emotions today and gain better self-awareness! 😊
+Start tracking your emotions today and gain better self-awareness! 
+
+
+Try Now: https://python-projects-elzvbvmokbsmlsfqu6s8oe.streamlit.app/
