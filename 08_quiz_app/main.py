@@ -108,24 +108,29 @@ questions = [
 ]
 
 
+# Streamlit session state ko use karke current question store kar rahe hain
 if "current_question" not in st.session_state:
-    st.session_state.current_question = random.choice(questions)
+    st.session_state.current_question = random.choice(questions)  # Random question select kar rahe hain
 
-question = st.session_state.current_question
+question = st.session_state.current_question  # Current question ko ek variable me store kar rahe hain
 
-st.subheader(question["question"])
+st.subheader(question["question"])  # Question ko display kar rahe hain Streamlit ke UI me
 
+# Streamlit ka radio button, jo user ko answer choose karne ki option deta hai
 select_options = st.radio("Choose your answer", question["options"], key="answer")
 
+# Streamlit ka button jo answer submit karega
 if st.button("Submit Answer"):
+    # Agar user ka selected answer correct hai
     if select_options == question["answer"]:
-        st.success("Correct Answer!")
-        st.balloons()
+        st.success("Correct Answer!")  # Success message show karega
+        st.balloons()  # Balloons animation show karega
     else:
-        st.error("Incorrect! The correct answer is " + question["answer"])
+        st.error("Incorrect! The correct answer is " + question["answer"])  # Galat answer par error message show karega
 
-    time.sleep(5)
+    time.sleep(5)  # 5 second ka delay daal rahe hain, taake user answer dekh sake
 
+    # Next question randomly select kar rahe hain
     st.session_state.current_question = random.choice(questions)
 
-    st.rerun()
+    st.rerun()  # Page ko dubara reload kar rahe hain taake naya question aaye
