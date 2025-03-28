@@ -64,24 +64,33 @@ class BookCollection:
     def find_book(self):
         """Search for books in the collection by title or author name."""
         search_type = input("Search by: \n1. Title\n2. Author\nEnter your choice: ")
-        search_text = input("Enter the title or author name to search for: ").lower()
+
+    # Ensuring correct key mapping
+        if search_type == "1":
+            key = "title"
+        elif search_type == "2":
+            key = "author"
+        else:
+             print("Invalid choice! Please enter 1 for Title or 2 for Author. \n")
+             return
+
+        search_text = input("Enter the title or author name to search for: \n").lower()
 
         found_books = [
-            book
-            for book in self.book_list
-            if search_text in book[search_type].lower()
-            or search_text in book["title"].lower()
-        ]
-        
+        book for book in self.book_list if search_text in book[key].lower()
+    ]
+
         if found_books:
             print(f"Found {len(found_books)} books:")
             for index, book in enumerate(found_books, 1):
                 reading_status = "Read" if book["read"] else "Not Read"
                 print(
-                    f"{index}. Title: {book['title']} - Author: {book['author']} - Year: {book['year']} - Genre: {book['genre']} - Status: {reading_status}\n"
-                )
+                     f"{index}. Title: {book['title']} - Author: {book['author']} - Year: {book['year']} - Genre: {book['genre']} - Status: {reading_status}\n"
+                     )
         else:
-                print("No matching books found.\n")
+              print("No matching books found.\n")
+
+
 
     def update_book(self):
         """Modify the details of an existing book in the collection."""
