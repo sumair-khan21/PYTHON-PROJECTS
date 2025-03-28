@@ -1,0 +1,23 @@
+[
+    {
+        "title": "the rose tree",
+        "author": "jones alex",
+        "year": "2022",
+        "genre": "she",
+        "read": false
+    },
+    {
+        "title": "my car",
+        "author": "helen",
+        "year": "1999",
+        "genre": "james",
+        "read": true
+    },
+    {
+        "title": "my home",
+        "author": "sammy",
+        "year": "2000",
+        "genre": "he",
+        "read": true
+    }
+]
