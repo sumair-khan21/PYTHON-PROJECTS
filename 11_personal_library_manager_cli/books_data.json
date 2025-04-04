@@ -1,0 +1,30 @@
+[
+    {
+        "title": "the rose tree",
+        "author": "jones alex",
+        "year": "2022",
+        "genre": "she",
+        "read": false
+    },
+    {
+        "title": "asdasd",
+        "author": "asda",
+        "year": "asda",
+        "genre": "asd",
+        "read": false
+    },
+    {
+        "title": "my home",
+        "author": "sammy",
+        "year": "2000",
+        "genre": "he",
+        "read": true
+    },
+    {
+        "title": "my child",
+        "author": "mark",
+        "year": "2023",
+        "genre": "me",
+        "read": true
+    }
+]
